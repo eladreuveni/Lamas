@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: 'next-app' # Specify the subdirectory path
+          path: '/next-app' # Specify the subdirectory path
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -96,4 +96,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v2
         with:
-          source-dir: next-app/out # Specify the subdirectory for deployment
+          source-dir: /next-app/out # Specify the subdirectory for deployment
