@@ -32,7 +32,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: './next-app' # Specify the subdirectory path
+          source-dir: './next-app' # Specify the subdirectory path
       - name: Detect package manager
         id: detect-package-manager
         run: |
