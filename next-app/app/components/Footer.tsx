@@ -17,7 +17,7 @@ const Footer = () => {
             </div>
             <div className='flex flex-col justify-center items-center text-xs no-select'>
                 <span>Ⓒ כל הזכויות שמורות לאלעד ראובני Ⓒ</span>
-                <span>*הנתונים לקוחים מסקר הוצאות משקי בית בין השנים 2012-2021, הלמ"ס*</span>
+                <span>*הנתונים לקוחים מסקר הוצאות משקי בית בין השנים 2012-2021, הלמ&quot;ס*</span>
             </div>
         </menu>
     )

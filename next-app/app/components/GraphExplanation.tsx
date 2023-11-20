@@ -21,7 +21,7 @@ const GraphExplanation = ({ fullSize, data }: Props) => {
                 {data.text}
             </div>
             {fullSize ? <div className=''>
-                {data.insights.map(ins => <div className='flex items-start gap-2 py-2 text-right'>
+                {data.insights.map((ins, i) => <div key={i} className='flex items-start gap-2 py-2 text-right'>
                     <Image className='w-4' priority src={Lightbulb} alt="insight" />
                     <span className=''>{ins}</span>
                 </div>)}
