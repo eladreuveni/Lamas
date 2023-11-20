@@ -36,7 +36,7 @@ jobs:
       - name: Detect package manager
         id: detect-package-manager
         run: |
-          ls ${{ github.workspace }}
+          ls ${{ github.workspace }}/next-app
           if [ -f "${{ github.workspace }}/next-app/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
