@@ -5,8 +5,10 @@ import { useAppContext } from '../context/AppContext'
 const Tag = ({ val, disabled }: { val: string, disabled?: boolean }) => {
     const { selectedTags, toggleTag } = useAppContext()
     const tagClick = (e: any) => {
-        if (!disabled) toggleTag(val);
-        e.stopPropagation();
+        if (!disabled) {
+            toggleTag(val);
+            e.stopPropagation();
+        }
     }
     return (
         <div onClick={tagClick}

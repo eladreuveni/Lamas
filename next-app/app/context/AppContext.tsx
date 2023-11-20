@@ -9,6 +9,7 @@ interface AppContextData {
     filteredCards: GraphData[];
     selectedCard: GraphData | null;
     setSelectedCard: Dispatch<SetStateAction<GraphData | null>>;
+    setSearchText: Dispatch<SetStateAction<string>>;
 }
 // Create the initial context with default values
 const AppContext = createContext<AppContextData | undefined>(undefined);
@@ -29,6 +30,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
     const [allGraphsData, setAllGraphsData] = useState<GraphData[]>(fakeData);
     const [selectedCard, setSelectedCard] = useState<GraphData | null>(null);
     const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+    const [searchText, setSearchText] = useState<string>('');
 
     /** map all tags in all graphs */
     const allTags = useMemo(() => {
@@ -41,12 +43,22 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
 
     /** filter cards according to search */
     const filteredCards = useMemo(() => {
-        if (!selectedTags.size) return allGraphsData
-        return allGraphsData.filter(gd => {
-            const res = gd.tags.some(tag => selectedTags.has(tag))
-            return res;
-        });
-    }, [selectedTags])
+        let filtered = allGraphsData
+        if (searchText) {
+            filtered = filtered.filter(gd => {
+                const res1 = gd.text.includes(searchText)
+                const res2 = gd.insights.some(ins => ins.includes(searchText))
+                return res1 && res2;
+            });
+        }
+        if (selectedTags.size) {
+            filtered = filtered.filter(gd => {
+                const res = gd.tags.some(tag => selectedTags.has(tag))
+                return res;
+            });
+        }
+        return filtered;
+    }, [selectedTags, searchText])
 
     const toggleTag = (tag: string) => {
         setSelectedTags(prev => {
@@ -64,6 +76,7 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({ children
         filteredCards,
         selectedCard,
         setSelectedCard,
+        setSearchText,
     };
 
     return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>;

@@ -14,7 +14,7 @@ const GraphExplanation = ({ fullSize, data }: Props) => {
     return (
         <>
             <div className={`flex flex-wrap gap-2 ${tagsClasses} flex-1 items-end`}>
-                {data.tags.map(tag => <Tag key={tag} val={tag} disabled={fullSize} />)}
+                {data.tags.map(tag => <Tag key={tag} val={tag} disabled={true} />)}
             </div>
             <div className={`${titleClasses} flex items-start gap-2 text-right`}>
                 {!fullSize && <Image className='w-4' priority src={CaretLeft} alt="title" />}
