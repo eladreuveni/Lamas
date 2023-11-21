@@ -38,6 +38,7 @@ jobs:
         run: |
           cd next-app/out
           ls
+          ls _next
 
   # Deployment job
   deploy:
