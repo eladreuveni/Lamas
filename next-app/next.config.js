@@ -1,8 +1,17 @@
-module.exports = {
-  // Target must be standalone
-  output: 'standalone',
-  // Set the subpath of your domain where your app is deployed
-  basePath: '/Lamas',
-  // Set the prefix for every asset path in your app
-  assetPrefix: '/Lamas/'
-};
+/**
+ * @type {import('next').NextConfig}
+ */
+const nextConfig = {
+    output: 'export',
+   
+    // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
+    // trailingSlash: true,
+   
+    // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
+    // skipTrailingSlashRedirect: true,
+   
+    // Optional: Change the output directory `out` -> `dist`
+    // distDir: 'dist',
+  }
+   
+  module.exports = nextConfig
