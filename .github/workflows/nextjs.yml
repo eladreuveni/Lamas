@@ -33,8 +33,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
-          name: next-app-output
-          path: next-app/out
+          name: next-app-output # Adjust the artifact name as needed
+          path: next-app/out # Adjust the path to where the artifact is generated
 
   # Deployment job
   deploy:
@@ -47,8 +47,8 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: next-app-output
-          path: next-app/out
+          name: next-app-output # Ensure this matches the artifact name from the build job
+          path: next-app/out # Adjust the path to retrieve the artifact
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
