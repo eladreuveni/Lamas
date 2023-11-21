@@ -61,7 +61,6 @@ jobs:
         run: |
           - name: List Artifacts
             run: |
-              echo pwd
               ls
-              ls next-app
               ls out
+              ls next-app
