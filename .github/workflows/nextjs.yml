@@ -59,8 +59,9 @@ jobs:
         #   token: ${{ secrets.GITHUB_TOKEN }}
         #   artifact_name: next-app-output # Ensure this matches the uploaded artifact name
         run: |
+          du -sh next-app/out  # Get the size of the output directory
+          du -sh next-app/output  # Get the size of the output directory
           cd next-app/out  # Navigate to the artifact directory
           find * -type l    # List symbolic links
-          du -sh next-app/out  # Get the size of the output directory
           find . -type l    # List symbolic links
           
