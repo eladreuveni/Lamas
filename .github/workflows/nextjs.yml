@@ -20,14 +20,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          path: 'next-app' # Specify the subdirectory path
+        # with:
+        #   path: 'next-app' # Specify the subdirectory path
 
       # ... Other steps such as detecting package manager, setting up Node, installing dependencies, building Next.js, etc.
 
       - name: Static HTML export with Next.js
         run: |
           cd next-app
+          ls
           npm install # Install dependencies if needed
           npm run build # Build your Next.js app (if not already built)
           npm run export # Export static HTML with Next.js
