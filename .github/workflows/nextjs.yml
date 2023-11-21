@@ -51,7 +51,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.MY_TOKEN }}
           artifact_name: next-app-output # Ensure this matches the uploaded artifact name
         # run: |
         #   ls
