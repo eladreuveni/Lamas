@@ -57,6 +57,9 @@ jobs:
         # uses: actions/deploy-pages@v2
         run: |
           ls
+          ls next-app
+          ls next-app/out
+          ls next-app/next-app
         # with:
         #   token: ${{ secrets.GITHUB_TOKEN }}
         #   provider: pages
