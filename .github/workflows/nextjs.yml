@@ -55,14 +55,14 @@ jobs:
           name: next-app-output # Ensure this matches the artifact name from the build job
 
       - name: Unzip artifact
-        run: tar -xf next-app/out/artifact.tar -C next-app/out
+        run: tar -xf artifact.tar -C .
           
       - name: Artifact test
         run: |
-          ls next-app/out
+          ls
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
         with:
           token: ${{ secrets.MY_TOKEN }}
-          artifact_name: next-app-output # Ensure this matches the uploaded artifact name
+          artifact_name: _next # Ensure this matches the uploaded artifact name
