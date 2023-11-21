@@ -63,4 +63,5 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           token: ${{ secrets.MY_TOKEN }}
-          artifact_name: next-app/out/next-app-output # Ensure this matches the uploaded artifact name
+          path: next-app/out
+          artifact_name: next-app-output # Ensure this matches the uploaded artifact name
