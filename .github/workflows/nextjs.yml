@@ -51,14 +51,14 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: next-app-output # Ensure this matches the artifact name from the build job
-          path: out # Adjust the path to retrieve the artifact
+          # path: out # Adjust the path to retrieve the artifact
 
       - name: Deploy to GitHub Pages
-        # uses: actions/deploy-pages@v2
-        # with:
-        #   token: ${{ secrets.GITHUB_TOKEN }}
-          # artifact_name: next-app-output # Ensure this matches the uploaded artifact name
-        run: |
-          ls
-          ls out
-          ls next-app
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: next-app-output # Ensure this matches the uploaded artifact name
+        # run: |
+        #   ls
+        #   ls out
+        #   ls next-app
