@@ -1,6 +1,7 @@
 import { TextField, TextFieldProps, styled } from '@mui/material';
 import React, { useState } from 'react'
 import { useAppContext } from '../context/AppContext';
+import Image from 'next/image';
 // import SearchIcon from '@mui/icons-material/Search';
 
 const MyTextField = styled((props: TextFieldProps) => (
@@ -39,8 +40,8 @@ const SearchField = () => {
                 placeholder="פה מחפשים"
                 variant="outlined"
             />
-            <img onClick={() => search(searchVal)} src="/icons/search.svg" alt="חיפוש" className='cursor-pointer h-8' />
-            <img onClick={randomCard} src="/icons/random.png" alt="רנדומלי" className='cursor-pointer h-10' />
+            <Image onClick={() => search(searchVal)} src="/icons/search.svg" alt="חיפוש" className='cursor-pointer h-8' />
+            <Image onClick={randomCard} src="/icons/random.png" alt="רנדומלי" className='cursor-pointer h-10' />
         </div>
     )
 }
