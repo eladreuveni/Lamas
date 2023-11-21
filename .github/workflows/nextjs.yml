@@ -59,8 +59,6 @@ jobs:
         #   token: ${{ secrets.GITHUB_TOKEN }}
           # artifact_name: next-app-output # Ensure this matches the uploaded artifact name
         run: |
-          - name: List Artifacts
-            run: |
-              ls
-              ls out
-              ls next-app
+          ls
+          ls out
+          ls next-app
