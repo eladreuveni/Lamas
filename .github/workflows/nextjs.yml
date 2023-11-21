@@ -27,12 +27,15 @@ concurrency:
 jobs:
   # Build job
   build:
+    defaults:
+      run:
+        working-directory: next-app # Set default working directory for all steps in the job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        with:
-          source-dir: './next-app' # Specify the subdirectory path
+        # with:
+        #   source-dir: './next-app' # Specify the subdirectory path
       - name: Detect package manager
         id: detect-package-manager
         working-directory: next-app # Set working directory
