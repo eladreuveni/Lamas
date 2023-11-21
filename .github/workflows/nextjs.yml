@@ -20,10 +20,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        # with:
-        #   path: 'next-app' # Specify the subdirectory path
-
-      # ... Other steps such as detecting package manager, setting up Node, installing dependencies, building Next.js, etc.
 
       - name: Static HTML export with Next.js
         run: |
@@ -31,7 +27,6 @@ jobs:
           ls
           npm install # Install dependencies if needed
           npm run build # Build your Next.js app (if not already built)
-          npx next export # Export static HTML with Next.js
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
@@ -54,7 +49,7 @@ jobs:
           # path: out # Adjust the path to retrieve the artifact
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           artifact_name: next-app-output # Ensure this matches the uploaded artifact name
