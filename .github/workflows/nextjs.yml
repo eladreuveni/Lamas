@@ -34,4 +34,45 @@ jobs:
           cd next-app # Change directory before running commands
           # Setup Node here, considering the new path
 
-      # Adjust other steps in a similar manner
+      # Adjust other steps in a similar manner, changing directory before running commands
+      - name: Install dependencies
+        run: |
+          cd next-app # Change directory before running commands
+          # Install dependencies here, considering the new path
+
+      - name: Build with Next.js
+        run: |
+          cd next-app # Change directory before running commands
+          # Build Next.js here, considering the new path
+
+      - name: Static HTML export with Next.js
+        run: |
+          cd next-app # Change directory before running commands
+          # Export static HTML with Next.js here, considering the new path
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: next-app-output
+          path: next-app/out
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: next-app-output
+          path: next-app/out
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          provider: pages
+          path: next-app/out # Specify the subdirectory for deployment
