@@ -54,8 +54,10 @@ jobs:
           path: next-app/out # Adjust the path to retrieve the artifact
 
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          provider: pages
-          path: next-app/out # Specify the subdirectory for deployment
+        # uses: actions/deploy-pages@v2
+        run: |
+          ls
+        # with:
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+        #   provider: pages
+        #   path: next-app/out # Specify the subdirectory for deployment
