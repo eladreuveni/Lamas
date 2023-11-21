@@ -59,11 +59,11 @@ jobs:
         #   token: ${{ secrets.GITHUB_TOKEN }}
           # artifact_name: next-app-output # Ensure this matches the uploaded artifact name
         run: |
-          ls
-          cd next-app
-          ls
-          ls out
-          ls next-app-output
+          - name: List Artifacts
+            run: |
+              ls $GITHUB_WORKSPACE
+              ls $GITHUB_WORKSPACE/next-app
+              ls $GITHUB_WORKSPACE/next-app/out
           # find * -type l    # List symbolic links
           # find . -type l    # List symbolic links
           
