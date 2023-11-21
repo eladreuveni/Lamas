@@ -31,7 +31,7 @@ jobs:
           ls
           npm install # Install dependencies if needed
           npm run build # Build your Next.js app (if not already built)
-          npm run export # Export static HTML with Next.js
+          # npm run export # Export static HTML with Next.js
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
