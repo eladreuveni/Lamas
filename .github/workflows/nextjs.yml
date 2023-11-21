@@ -53,7 +53,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: next-app-output # Ensure this matches the artifact name from the build job
-          path: ${{ github.workspace }}/next-app/out # Adjust the path to retrieve the artifact
+          path: next-app/out # Adjust the path to retrieve the artifact
           
       - name: Artifact test
         run: |
@@ -63,4 +63,4 @@ jobs:
         uses: actions/deploy-pages@v2
         with:
           token: ${{ secrets.MY_TOKEN }}
-          artifact_name: next-app-output # Ensure this matches the uploaded artifact name
+          artifact_name: next-app/out/next-app-output # Ensure this matches the uploaded artifact name
