@@ -30,50 +30,8 @@ jobs:
           # Add your package manager detection logic here, considering the new path
 
       - name: Setup Node
-        working-directory: next-app # Set working directory to 'next-app'
-        uses: actions/setup-node@v3
-        with:
-          node-version: "16"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+        run: |
+          cd next-app # Change directory before running commands
+          # Setup Node here, considering the new path
 
-      # Adjust other steps in a similar manner, changing directory before running commands
-      - name: Install dependencies
-        working-directory: next-app # Set working directory to 'next-app'
-        run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
-
-      - name: Build with Next.js
-        working-directory: next-app # Set working directory to 'next-app'
-        run: ${{ steps.detect-package-manager.outputs.runner }} next build
-
-      - name: Static HTML export with Next.js
-        working-directory: next-app # Set working directory to 'next-app'
-        run: ${{ steps.detect-package-manager.outputs.runner }} next export
-
-      - name: Upload artifact
-        working-directory: next-app # Set working directory to 'next-app'
-        uses: actions/upload-artifact@v2
-        with:
-          name: next-app-output
-          path: next-app/out
-
-  # Deployment job
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v2
-        with:
-          name: next-app-output
-          path: next-app/out
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          provider: pages
-          path: next-app/out # Specify the subdirectory for deployment
+      # Adjust other steps in a similar manner
