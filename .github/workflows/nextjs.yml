@@ -35,8 +35,9 @@ jobs:
           source-dir: './next-app' # Specify the subdirectory path
       - name: Detect package manager
         id: detect-package-manager
+        working-directory: next-app # Set working directory
         run: |
-          ls ${{ github.workspace }}/next-app
+          ls ${{ github.workspace }}
           if [ -f "${{ github.workspace }}/next-app/yarn.lock" ]; then
             echo "manager=yarn" >> $GITHUB_OUTPUT
             echo "command=install" >> $GITHUB_OUTPUT
@@ -55,6 +56,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "16"
+          path: ./next-app
           cache: ${{ steps.detect-package-manager.outputs.manager }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -64,6 +66,7 @@ jobs:
           #
           # You may remove this line if you want to manage the configuration yourself.
           static_site_generator: next
+          path: ./next-app
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -75,15 +78,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json', '**/yarn.lock') }}-
       - name: Install dependencies
+        working-directory: next-app # Set working directory
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Next.js
+        working-directory: next-app # Set working directory
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Static HTML export with Next.js
+        working-directory: next-app # Set working directory
         run: ${{ steps.detect-package-manager.outputs.runner }} next export
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./out
+          path: ./next-app/out
 
   # Deployment job
   deploy:
@@ -96,5 +102,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        # with:
-        #   source-dir: next-app/out # Specify the subdirectory for deployment
+        with:
+          source-dir: next-app/out # Specify the subdirectory for deployment
