@@ -32,10 +32,11 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           name: next-app-output # Adjust the artifact name as needed
-          path: ${{ github.workspace }}/next-app/out # Adjust the path to where the artifact is generated
+          path: next-app/out # Adjust the path to where the artifact is generated
           
       - name: Test artifact
         run: |
+          ls
           cd next-app/out
           ls
           ls _next
