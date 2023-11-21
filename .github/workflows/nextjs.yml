@@ -33,6 +33,11 @@ jobs:
         with:
           name: next-app-output # Adjust the artifact name as needed
           path: next-app/out # Adjust the path to where the artifact is generated
+          
+      - name: Test artifact
+        run: |
+          cd next-app/out
+          ls
 
   # Deployment job
   deploy:
