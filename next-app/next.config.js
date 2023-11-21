@@ -1,17 +1,8 @@
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
-    output: 'export',
-   
-    // Optional: Change links `/me` -> `/me/` and emit `/me.html` -> `/me/index.html`
-    // trailingSlash: true,
-   
-    // Optional: Prevent automatic `/me` -> `/me/`, instead preserve `href`
-    // skipTrailingSlashRedirect: true,
-   
-    // Optional: Change the output directory `out` -> `dist`
-    // distDir: 'dist',
-  }
-   
-  module.exports = nextConfig
+module.exports = {
+  // Target must be serverless
+  target: 'serverless',
+  // Set the subpath of your domain where your app is deployed
+  basePath: '/Lamas',
+  // Set the prefix for every asset path in your app
+  assetPrefix: '/Lamas/'
+};
