@@ -23,32 +23,12 @@ jobs:
         with:
           path: 'next-app' # Specify the subdirectory path
 
-      - name: Detect package manager
-        id: detect-package-manager
-        run: |
-          cd next-app # Change directory before running commands
-          # Add your package manager detection logic here, considering the new path
-
-      - name: Setup Node
-        run: |
-          cd next-app # Change directory before running commands
-          # Setup Node here, considering the new path
-
-      # Adjust other steps in a similar manner, changing directory before running commands
-      - name: Install dependencies
-        run: |
-          cd next-app # Change directory before running commands
-          # Install dependencies here, considering the new path
-
-      - name: Build with Next.js
-        run: |
-          cd next-app # Change directory before running commands
-          # Build Next.js here, considering the new path
+      # ... Other steps such as detecting package manager, setting up Node, installing dependencies, building Next.js, etc.
 
       - name: Static HTML export with Next.js
         run: |
-          cd next-app # Change directory before running commands
-          # Export static HTML with Next.js here, considering the new path
+          cd next-app
+          # Export static HTML with Next.js here
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
